@@ -1,0 +1,22 @@
+#!/bin/bash
+
+# The commit message file path
+COMMIT_MSG_FILE=$1
+
+# Read the first line of the commit message
+COMMIT_MSG_LINE=$(head -n 1 $COMMIT_MSG_FILE)
+
+# Define a regex pattern for the commit message
+# This pattern matches:
+# - A type followed by a colon and a space
+# - Optionally, a scope enclosed in parentheses
+# - A space and a descriptive message
+PATTERN="^(feat|fix|docs|style|refactor|perf|test|chore)(\([^\)]+\))?: .+"
+
+# Check if the commit message conforms to the pattern
+if [[ ! $COMMIT_MSG_LINE =~ $PATTERN ]]; then
+    echo "ERROR: Commit message does not follow '<type>(<scope>): <description>' format"
+    exit 1
+fi
+
+exit 0
