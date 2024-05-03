@@ -6,8 +6,8 @@ import org.korgut.clinicapi.domain.clinic.core.model.entities.HealthInsurance;
 import org.korgut.clinicapi.domain.clinic.core.model.enums.CrudOperation;
 import org.korgut.clinicapi.domain.clinic.core.model.exceptions.CrudException;
 import org.korgut.clinicapi.domain.clinic.core.model.exceptions.DatabaseException;
-import org.korgut.clinicapi.domain.clinic.core.model.identifiers.DoctorIdentifier;
-import org.korgut.clinicapi.domain.clinic.core.model.identifiers.Identifier;
+import org.korgut.clinicapi.domain.clinic.core.model.results.DoctorHasBeenCreated;
+import org.korgut.clinicapi.domain.clinic.core.model.results.CommandResult;
 import org.korgut.clinicapi.domain.clinic.core.ports.incoming.CreateDoctor;
 import org.korgut.clinicapi.domain.clinic.core.ports.outgoing.DoctorDatabase;
 import org.korgut.clinicapi.domain.clinic.core.ports.outgoing.HealthInsuranceDatabase;
@@ -30,7 +30,7 @@ public class DoctorFacade implements CreateDoctor {
     }
 
     @Override
-    public Identifier createDoctor(CreateDoctorCommand createDoctorCommand) throws CrudException {
+    public CommandResult createDoctor(CreateDoctorCommand createDoctorCommand) throws CrudException {
         try {
             // Find health insurance
             Optional<HealthInsurance> healthInsurance = this.healthInsuranceDatabase.findHealthInsuranceById(createDoctorCommand.healthInsuranceId());
@@ -57,7 +57,7 @@ public class DoctorFacade implements CreateDoctor {
 
             Doctor created = doctorDatabase.createDoctor(doctor);
 
-            return new DoctorIdentifier(created.id(), created.name());
+            return new DoctorHasBeenCreated(created.id(), created.name());
         } catch (DatabaseException e) {
             throw new CrudException(Doctor.class, CrudOperation.CREATE, e.getMessage());
         }

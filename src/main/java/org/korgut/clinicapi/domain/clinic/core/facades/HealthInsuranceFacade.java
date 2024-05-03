@@ -6,8 +6,8 @@ import org.korgut.clinicapi.domain.clinic.core.model.enums.CrudOperation;
 import org.korgut.clinicapi.domain.clinic.core.model.exceptions.CrudException;
 import org.korgut.clinicapi.domain.clinic.core.model.exceptions.DatabaseException;
 import org.korgut.clinicapi.domain.clinic.core.model.exceptions.ValidationException;
-import org.korgut.clinicapi.domain.clinic.core.model.identifiers.HealthInsuranceIdentifier;
-import org.korgut.clinicapi.domain.clinic.core.model.identifiers.Identifier;
+import org.korgut.clinicapi.domain.clinic.core.model.results.HeathInsuranceHasBeenCreated;
+import org.korgut.clinicapi.domain.clinic.core.model.results.CommandResult;
 import org.korgut.clinicapi.domain.clinic.core.ports.incoming.CreateHealthInsurance;
 import org.korgut.clinicapi.domain.clinic.core.ports.outgoing.CooperativeValidator;
 import org.korgut.clinicapi.domain.clinic.core.ports.outgoing.HealthInsuranceDatabase;
@@ -26,7 +26,7 @@ public class HealthInsuranceFacade implements CreateHealthInsurance {
     }
 
     @Override
-    public Identifier createHealthInsurance(CreateHealthInsuranceCommand createHealthInsuranceCommand) throws CrudException {
+    public CommandResult createHealthInsurance(CreateHealthInsuranceCommand createHealthInsuranceCommand) throws CrudException {
         try {
             String cooperativeName = createHealthInsuranceCommand.cooperative();
 
@@ -44,7 +44,7 @@ public class HealthInsuranceFacade implements CreateHealthInsurance {
             // Create health insurance db entry
             HealthInsurance created = healthInsuranceDatabase.createHealthInsurance(healthInsurance);
 
-            return new HealthInsuranceIdentifier(created.id(), created.name());
+            return new HeathInsuranceHasBeenCreated(created.id(), created.name());
         } catch (DatabaseException | ValidationException e) {
             throw new CrudException(HealthInsurance.class, CrudOperation.CREATE, e.getMessage());
         }

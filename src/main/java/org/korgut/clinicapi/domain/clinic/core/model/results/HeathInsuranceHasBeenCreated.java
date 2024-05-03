@@ -1,14 +1,14 @@
-package org.korgut.clinicapi.domain.clinic.core.model.identifiers;
+package org.korgut.clinicapi.domain.clinic.core.model.results;
 
 public class HeathInsuranceHasBeenCreated extends CommandResult {
-    private final String healthInsuranceName;
+    private final String name;
 
     public HeathInsuranceHasBeenCreated(final String id, final String healthInsuranceName) {
         this.id = id;
-        this.healthInsuranceName = healthInsuranceName;
+        this.name = healthInsuranceName;
     }
 
     public String getHealthInsuranceName() {
-        return healthInsuranceName;
+        return name;
     }
 }
