@@ -1,9 +1,9 @@
 package org.korgut.clinicapi.domain.clinic.core.model.identifiers;
 
-public class DoctorIdentifier extends Identifier {
+public class DoctorHasBeenCreated extends CommandResult {
     private final String name;
 
-    public DoctorIdentifier(String id, String name) {
+    public DoctorHasBeenCreated(String id, String name) {
         this.id = id;
         this.name = name;
     }
