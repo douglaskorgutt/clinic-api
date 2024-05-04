@@ -1,7 +1,15 @@
 package org.korgut.clinicapi.domain.admin.core.model.commands;
 
-public record CreateDoctorCommand(String firstName, String lastName, String specialty, String healthInsuranceId) {
+public record CreateDoctorCommand(
+        String commandId,
+        String firstName,
+        String lastName,
+        String specialty,
+        String healthInsuranceId) {
     public CreateDoctorCommand {
+        if (commandId == null || commandId.isBlank())
+            throw new IllegalArgumentException("Command ID cannot be null or blank");
+
         if (firstName == null || firstName.isBlank()) {
             throw new IllegalArgumentException("First name cannot be null or blank");
         }
