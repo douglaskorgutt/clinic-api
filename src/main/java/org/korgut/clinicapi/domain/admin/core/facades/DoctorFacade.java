@@ -48,7 +48,7 @@ public class DoctorFacade implements CreateDoctor, FindDoctor {
                 );
 
             // If health insurance no longer valid, throw
-            if (Boolean.FALSE.equals(healthInsurance.get().isValid()))
+            if (Boolean.FALSE.equals(healthInsurance.get().getIsValid()))
                 throw new CrudException(Doctor.class, CrudOperation.CREATE, "Health insurance is no longer valid");
 
             Doctor doctor = new Doctor(

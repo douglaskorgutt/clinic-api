@@ -11,8 +11,10 @@ import org.korgut.clinicapi.domain.admin.infra.repository.DoctorRepository;
 import org.korgut.clinicapi.domain.admin.infra.repository.HealthInsuranceRepository;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @Configuration
+@EnableJpaRepositories(basePackages = "org.korgut.clinicapi.domain.admin.infra.repository")
 public class AdminDependencyInjectionConfiguration {
 
     @Bean

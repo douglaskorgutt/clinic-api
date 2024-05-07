@@ -11,6 +11,11 @@ java {
     sourceCompatibility = '17'
 }
 
+jar {
+    archiveBaseName = 'clinic-api'
+    archiveVersion = '0.0.1-SNAPSHOT'
+}
+
 repositories {
     mavenCentral()
 }
@@ -23,8 +28,8 @@ dependencies {
     runtimeOnly 'org.postgresql:postgresql'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'org.springframework.security:spring-security-test'
+
+    // Add Jakarta Persistence API
+    implementation 'jakarta.persistence:jakarta.persistence-api:3.0.0'
 }
 
-tasks.named('test') {
-    useJUnitPlatform()
-}

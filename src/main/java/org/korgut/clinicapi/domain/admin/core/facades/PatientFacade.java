@@ -44,7 +44,7 @@ public class PatientFacade implements CreatePatient {
                 throw new CrudException(Patient.class, CrudOperation.CREATE, "Unable to create patient because health insurance was not found");
 
             // If health insurance no longer valid, throw
-            if (healthInsurance.get().isValid())
+            if (Boolean.TRUE.equals(healthInsurance.get().getIsValid()))
                 throw new CrudException(Patient.class, CrudOperation.CREATE, "Health insurance is no longer valid");
 
             // Find city
