@@ -28,4 +28,9 @@ public class DoctorDatabaseAdapter implements DoctorDatabase {
     public Optional<Doctor> findDoctorByName(String name) throws DatabaseException {
         return Optional.empty();
     }
+
+    @Override
+    public Doctor deleteDoctor(String id) throws DatabaseException {
+        return null;
+    }
 }

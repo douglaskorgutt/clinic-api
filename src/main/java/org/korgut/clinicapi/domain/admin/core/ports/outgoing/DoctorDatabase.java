@@ -10,4 +10,6 @@ public interface DoctorDatabase {
     Doctor createDoctor(Doctor doctor) throws DatabaseException;
 
     Optional<Doctor> findDoctorByName(String name) throws DatabaseException;
+
+    Doctor deleteDoctor(String id) throws DatabaseException;
 }

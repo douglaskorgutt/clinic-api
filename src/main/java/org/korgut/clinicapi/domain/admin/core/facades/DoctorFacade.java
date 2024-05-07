@@ -2,6 +2,7 @@ package org.korgut.clinicapi.domain.admin.core.facades;
 
 
 import org.korgut.clinicapi.domain.admin.core.model.commands.CreateDoctorCommand;
+import org.korgut.clinicapi.domain.admin.core.model.commands.DeleteDoctorCommand;
 import org.korgut.clinicapi.domain.admin.core.model.commands.FindDoctorCommand;
 import org.korgut.clinicapi.domain.admin.core.model.entities.Doctor;
 import org.korgut.clinicapi.domain.admin.core.model.entities.HealthInsurance;
@@ -10,8 +11,10 @@ import org.korgut.clinicapi.domain.admin.core.model.exceptions.CrudException;
 import org.korgut.clinicapi.domain.admin.core.model.exceptions.DatabaseException;
 import org.korgut.clinicapi.domain.admin.core.model.results.CommandResult;
 import org.korgut.clinicapi.domain.admin.core.model.results.DoctorHasBeenCreated;
+import org.korgut.clinicapi.domain.admin.core.model.results.DoctorHasBeenDeletedResult;
 import org.korgut.clinicapi.domain.admin.core.model.results.DoctorHasBeenFound;
 import org.korgut.clinicapi.domain.admin.core.ports.incoming.CreateDoctor;
+import org.korgut.clinicapi.domain.admin.core.ports.incoming.DeleteDoctor;
 import org.korgut.clinicapi.domain.admin.core.ports.incoming.FindDoctor;
 import org.korgut.clinicapi.domain.admin.core.ports.outgoing.DoctorDatabase;
 import org.korgut.clinicapi.domain.admin.core.ports.outgoing.HealthInsuranceDatabase;
@@ -20,7 +23,7 @@ import java.util.Optional;
 import java.util.UUID;
 
 
-public class DoctorFacade implements CreateDoctor, FindDoctor {
+public class DoctorFacade implements CreateDoctor, FindDoctor, DeleteDoctor {
 
     private final HealthInsuranceDatabase healthInsuranceDatabase;
     private final DoctorDatabase doctorDatabase;
@@ -83,6 +86,36 @@ public class DoctorFacade implements CreateDoctor, FindDoctor {
             return new DoctorHasBeenFound(UUID.randomUUID().toString(), findDoctorCommand.id(), doctor.get());
         } catch (DatabaseException e) {
             throw new CrudException(Doctor.class, CrudOperation.CREATE, e.getMessage());
+        }
+    }
+
+    @Override
+    public CommandResult execute(DeleteDoctorCommand deleteDoctorCommand) throws CrudException {
+        try {
+            String doctorName = deleteDoctorCommand.doctorNbame();
+
+            // Find doctor to be deleted using doctor name
+            Optional<Doctor> doctor = this.doctorDatabase.findDoctorByName(doctorName);
+
+            // If doctor not found, throw
+            if (doctor.isEmpty())
+                throw new CrudException(
+                        Doctor.class,
+                        CrudOperation.DELETE,
+                        "Doctor with name [" + doctorName + "] was not found"
+                );
+
+            // Delete doctor
+            Doctor deleted = doctorDatabase.deleteDoctor(doctor.get().id());
+
+            return new DoctorHasBeenDeletedResult(
+                    UUID.randomUUID().toString(),
+                    deleteDoctorCommand.commandId(),
+                    deleted.id(),
+                    deleted.name()
+            );
+        } catch (DatabaseException e) {
+            throw new CrudException(Doctor.class, CrudOperation.DELETE, e.getMessage());
         }
     }
 }
