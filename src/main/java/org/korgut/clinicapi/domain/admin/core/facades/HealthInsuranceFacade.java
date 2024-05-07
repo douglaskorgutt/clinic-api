@@ -27,7 +27,7 @@ public class HealthInsuranceFacade implements CreateHealthInsurance {
     }
 
     @Override
-    public CommandResult createHealthInsurance(CreateHealthInsuranceCommand createHealthInsuranceCommand) throws CrudException {
+    public CommandResult execute(CreateHealthInsuranceCommand createHealthInsuranceCommand) throws CrudException {
         try {
             String cooperativeName = createHealthInsuranceCommand.cooperative();
 

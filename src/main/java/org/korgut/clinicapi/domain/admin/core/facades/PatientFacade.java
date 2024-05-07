@@ -34,7 +34,7 @@ public class PatientFacade implements CreatePatient {
     }
 
     @Override
-    public CommandResult createPatient(CreatePatientCommand createPatientCommand) throws CrudException {
+    public CommandResult execute(CreatePatientCommand createPatientCommand) throws CrudException {
         try {
             // Find health insurance
             Optional<HealthInsurance> healthInsurance = healthInsuranceDatabase.findHealthInsuranceById(createPatientCommand.healthInsuranceId());

@@ -34,7 +34,7 @@ public class DoctorFacade implements CreateDoctor, FindDoctor {
     }
 
     @Override
-    public CommandResult createDoctor(CreateDoctorCommand createDoctorCommand) throws CrudException {
+    public CommandResult execute(CreateDoctorCommand createDoctorCommand) throws CrudException {
         try {
             // Find health insurance
             Optional<HealthInsurance> healthInsurance = this.healthInsuranceDatabase.findHealthInsuranceById(createDoctorCommand.healthInsuranceId());
@@ -69,7 +69,7 @@ public class DoctorFacade implements CreateDoctor, FindDoctor {
     }
 
     @Override
-    public CommandResult findDoctorByName(FindDoctorCommand findDoctorCommand) throws CrudException {
+    public CommandResult execute(FindDoctorCommand findDoctorCommand) throws CrudException {
         try {
             Optional<Doctor> doctor = this.doctorDatabase.findDoctorByName(findDoctorCommand.name());
 

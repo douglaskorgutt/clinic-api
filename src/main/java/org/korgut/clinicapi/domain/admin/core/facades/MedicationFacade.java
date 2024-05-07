@@ -26,7 +26,7 @@ public class MedicationFacade implements CreateMedication {
     }
 
     @Override
-    public CommandResult createMedication(CreateMedicationCommand createMedicationCommand) throws CrudException {
+    public CommandResult execute(CreateMedicationCommand createMedicationCommand) throws CrudException {
         try {
             // Create medication
             Medication medication = new Medication(

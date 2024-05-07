@@ -6,5 +6,5 @@ import org.korgut.clinicapi.domain.admin.core.model.exceptions.CrudException;
 import org.korgut.clinicapi.domain.admin.core.model.results.CommandResult;
 
 public interface CreateMedication {
-    CommandResult createMedication(CreateMedicationCommand createMedicationCommand) throws CrudException;
+    CommandResult execute(CreateMedicationCommand createMedicationCommand) throws CrudException;
 }

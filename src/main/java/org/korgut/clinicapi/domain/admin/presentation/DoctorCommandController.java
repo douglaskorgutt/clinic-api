@@ -34,7 +34,7 @@ public class DoctorCommandController {
         );
 
         // Create doctor
-        DoctorHasBeenCreated result = (DoctorHasBeenCreated) createDoctor.createDoctor(createDoctorCommand);
+        DoctorHasBeenCreated result = (DoctorHasBeenCreated) createDoctor.execute(createDoctorCommand);
 
         return ResponseEntity.ok().body(new CreateDoctorOutboundDto(result.getCommandId(), result.getDoctorId(), result.getName()));
     }
