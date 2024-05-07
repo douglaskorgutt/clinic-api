@@ -92,7 +92,7 @@ public class DoctorFacade implements CreateDoctor, FindDoctor, DeleteDoctor {
     @Override
     public CommandResult execute(DeleteDoctorCommand deleteDoctorCommand) throws CrudException {
         try {
-            String doctorName = deleteDoctorCommand.doctorNbame();
+            String doctorName = deleteDoctorCommand.doctorName();
 
             // Find doctor to be deleted using doctor name
             Optional<Doctor> doctor = this.doctorDatabase.findDoctorByName(doctorName);
