@@ -33,4 +33,9 @@ public class DoctorDatabaseAdapter implements DoctorDatabase {
     public Doctor deleteDoctor(String id) throws DatabaseException {
         return null;
     }
+
+    @Override
+    public Doctor updateDoctor(Doctor doctor) throws DatabaseException {
+        return null;
+    }
 }

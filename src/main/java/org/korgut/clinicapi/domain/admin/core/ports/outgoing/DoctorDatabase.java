@@ -12,4 +12,6 @@ public interface DoctorDatabase {
     Optional<Doctor> findDoctorByName(String name) throws DatabaseException;
 
     Doctor deleteDoctor(String id) throws DatabaseException;
+
+    Doctor updateDoctor(Doctor doctor) throws DatabaseException;
 }

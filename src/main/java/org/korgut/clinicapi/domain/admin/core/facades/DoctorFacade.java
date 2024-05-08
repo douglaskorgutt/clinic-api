@@ -4,18 +4,17 @@ package org.korgut.clinicapi.domain.admin.core.facades;
 import org.korgut.clinicapi.domain.admin.core.model.commands.CreateDoctorCommand;
 import org.korgut.clinicapi.domain.admin.core.model.commands.DeleteDoctorCommand;
 import org.korgut.clinicapi.domain.admin.core.model.commands.FindDoctorCommand;
+import org.korgut.clinicapi.domain.admin.core.model.commands.UpdateDoctorCommand;
 import org.korgut.clinicapi.domain.admin.core.model.entities.Doctor;
 import org.korgut.clinicapi.domain.admin.core.model.entities.HealthInsurance;
 import org.korgut.clinicapi.domain.admin.core.model.enums.CrudOperation;
 import org.korgut.clinicapi.domain.admin.core.model.exceptions.CrudException;
 import org.korgut.clinicapi.domain.admin.core.model.exceptions.DatabaseException;
-import org.korgut.clinicapi.domain.admin.core.model.results.CommandResult;
-import org.korgut.clinicapi.domain.admin.core.model.results.DoctorHasBeenCreated;
-import org.korgut.clinicapi.domain.admin.core.model.results.DoctorHasBeenDeletedResult;
-import org.korgut.clinicapi.domain.admin.core.model.results.DoctorHasBeenFound;
+import org.korgut.clinicapi.domain.admin.core.model.results.*;
 import org.korgut.clinicapi.domain.admin.core.ports.incoming.CreateDoctor;
 import org.korgut.clinicapi.domain.admin.core.ports.incoming.DeleteDoctor;
 import org.korgut.clinicapi.domain.admin.core.ports.incoming.FindDoctor;
+import org.korgut.clinicapi.domain.admin.core.ports.incoming.UpdateDoctor;
 import org.korgut.clinicapi.domain.admin.core.ports.outgoing.DoctorDatabase;
 import org.korgut.clinicapi.domain.admin.core.ports.outgoing.HealthInsuranceDatabase;
 
@@ -23,7 +22,7 @@ import java.util.Optional;
 import java.util.UUID;
 
 
-public class DoctorFacade implements CreateDoctor, FindDoctor, DeleteDoctor {
+public class DoctorFacade implements CreateDoctor, FindDoctor, DeleteDoctor, UpdateDoctor {
 
     private final HealthInsuranceDatabase healthInsuranceDatabase;
     private final DoctorDatabase doctorDatabase;
@@ -108,7 +107,7 @@ public class DoctorFacade implements CreateDoctor, FindDoctor, DeleteDoctor {
             // Delete doctor
             Doctor deleted = doctorDatabase.deleteDoctor(doctor.get().id());
 
-            return new DoctorHasBeenDeletedResult(
+            return new DoctorHasBeenDeleted(
                     UUID.randomUUID().toString(),
                     deleteDoctorCommand.commandId(),
                     deleted.id(),
@@ -116,6 +115,29 @@ public class DoctorFacade implements CreateDoctor, FindDoctor, DeleteDoctor {
             );
         } catch (DatabaseException e) {
             throw new CrudException(Doctor.class, CrudOperation.DELETE, e.getMessage());
+        }
+    }
+
+    @Override
+    public CommandResult execute(UpdateDoctorCommand command) throws CrudException {
+        try {
+            Doctor doctor = command.doctor();
+
+            // If given doctor does not have health insurance information, throw
+            if (doctor.healthInsurance() == null)
+                throw new CrudException(
+                        Doctor.class,
+                        CrudOperation.UPDATE,
+                        "Health insurance not found. Can't update doctor: "
+                                + Optional.ofNullable(doctor.name()).orElse("Doctor name not found")
+                );
+
+            // Update doctor
+            Doctor updated = this.doctorDatabase.updateDoctor(command.doctor());
+
+            return new DoctorHasBeenUpdated(UUID.randomUUID().toString(), command.commandId(), updated);
+        } catch (DatabaseException e) {
+            throw new CrudException(Doctor.class, CrudOperation.UPDATE, e.getMessage());
         }
     }
 }

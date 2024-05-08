@@ -1,10 +1,10 @@
 package org.korgut.clinicapi.domain.admin.core.model.results;
 
-public class DoctorHasBeenDeletedResult extends CommandResult {
+public class DoctorHasBeenDeleted extends CommandResult {
     private String doctorId;
     private String doctorName;
 
-    public DoctorHasBeenDeletedResult(String commandId, String inboundCommandId, String doctorId, String doctorName) {
+    public DoctorHasBeenDeleted(String commandId, String inboundCommandId, String doctorId, String doctorName) {
         this.commandId = commandId;
         this.inboundCommandId = inboundCommandId;
         this.doctorId = doctorId;
