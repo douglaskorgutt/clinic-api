@@ -64,7 +64,7 @@ public class DoctorFacade implements CreateDoctor, FindDoctor, DeleteDoctor, Upd
             Doctor created = doctorDatabase.createDoctor(doctor);
 
             String resultCommandId = UUID.randomUUID().toString();
-            return new DoctorHasBeenCreated(created.id(), created.name(), resultCommandId, createDoctorCommand.commandId());
+            return new DoctorHasBeenCreated(created.getId(), created.getName(), resultCommandId, createDoctorCommand.commandId());
         } catch (DatabaseException e) {
             throw new CrudException(Doctor.class, CrudOperation.CREATE, e.getMessage());
         }
@@ -105,13 +105,13 @@ public class DoctorFacade implements CreateDoctor, FindDoctor, DeleteDoctor, Upd
                 );
 
             // Delete doctor
-            Doctor deleted = doctorDatabase.deleteDoctor(doctor.get().id());
+            Doctor deleted = doctorDatabase.deleteDoctor(doctor.get().getId());
 
             return new DoctorHasBeenDeleted(
                     UUID.randomUUID().toString(),
                     deleteDoctorCommand.commandId(),
-                    deleted.id(),
-                    deleted.name()
+                    deleted.getId(),
+                    deleted.getName()
             );
         } catch (DatabaseException e) {
             throw new CrudException(Doctor.class, CrudOperation.DELETE, e.getMessage());
@@ -124,12 +124,12 @@ public class DoctorFacade implements CreateDoctor, FindDoctor, DeleteDoctor, Upd
             Doctor doctor = command.doctor();
 
             // If given doctor does not have health insurance information, throw
-            if (doctor.healthInsurance() == null)
+            if (doctor.getHealthInsurance() == null)
                 throw new CrudException(
                         Doctor.class,
                         CrudOperation.UPDATE,
                         "Health insurance not found. Can't update doctor: "
-                                + Optional.ofNullable(doctor.name()).orElse("Doctor name not found")
+                                + Optional.ofNullable(doctor.getName()).orElse("Doctor name not found")
                 );
 
             // Update doctor

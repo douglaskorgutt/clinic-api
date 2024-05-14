@@ -6,6 +6,7 @@ public class Doctor {
     private String lastName;
     private String specialty;
     private HealthInsurance healthInsurance;
+
     public Doctor(String id, String name, String lastName, String specialty, HealthInsurance healthInsurance) {
         this.id = id;
         this.name = name;
