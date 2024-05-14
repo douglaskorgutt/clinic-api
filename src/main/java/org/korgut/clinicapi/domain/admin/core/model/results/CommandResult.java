@@ -4,6 +4,11 @@ public abstract class CommandResult {
     String commandId;
     String inboundCommandId;
 
+    CommandResult(String commandId, String inboundCommandId) {
+       this.commandId = commandId;
+       this.inboundCommandId = inboundCommandId;
+    }
+
     public String getCommandId() {
         return commandId;
     }
