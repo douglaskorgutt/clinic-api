@@ -10,4 +10,6 @@ public interface HealthInsuranceDatabase {
     HealthInsurance createHealthInsurance(HealthInsurance healthInsurance) throws DatabaseException;
 
     Optional<HealthInsurance> findHealthInsuranceById(String id) throws DatabaseException;
+
+    Optional<HealthInsurance> findHealthInsuranceByName(String name) throws DatabaseException;
 }
