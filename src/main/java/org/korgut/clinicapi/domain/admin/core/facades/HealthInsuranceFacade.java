@@ -51,7 +51,7 @@ public class HealthInsuranceFacade implements CreateHealthInsurance, FindHealthI
             // Create health insurance db entry
             HealthInsurance created = healthInsuranceDatabase.createHealthInsurance(healthInsurance);
 
-            return new HeathInsuranceHasBeenCreated(created.getId(), created.getName());
+            return new HeathInsuranceHasBeenCreated(UUID.randomUUID().toString(), createHealthInsuranceCommand.commandId(), created.getName());
         } catch (DatabaseException | ValidationException e) {
             throw new CrudException(HealthInsurance.class, CrudOperation.CREATE, e.getMessage());
         }

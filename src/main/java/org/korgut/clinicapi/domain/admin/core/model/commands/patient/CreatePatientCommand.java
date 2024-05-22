@@ -1,6 +1,7 @@
 package org.korgut.clinicapi.domain.admin.core.model.commands.patient;
 
 public record CreatePatientCommand(
+        String commandId,
         String name,
         Float height,
         Float weight,

@@ -68,7 +68,7 @@ public class PatientFacade implements CreatePatient {
             // Save patient
             Patient created = patientDatabase.createPatient(patient);
 
-            return new PatientHasBeenCreated(created.name());
+            return new PatientHasBeenCreated(UUID.randomUUID().toString(), createPatientCommand.commandId(), created.getName());
         } catch (DatabaseException e) {
             throw new CrudException(Patient.class, CrudOperation.CREATE, e.getMessage());
         }

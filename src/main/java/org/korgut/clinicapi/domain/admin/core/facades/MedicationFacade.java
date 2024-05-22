@@ -41,7 +41,12 @@ public class MedicationFacade implements CreateMedication {
             // If so, create medication
             Medication created = medicationDatabase.createMedication(medication);
 
-            return new MedicationHasBeenCreated(created.id(), created.name());
+            return new MedicationHasBeenCreated(
+                    UUID.randomUUID().toString(),
+                    createMedicationCommand.commandId(),
+                    created.getId(),
+                    created.getName()
+            );
         } catch (DatabaseException | ValidationException e) {
             throw new CrudException(Medication.class, CrudOperation.CREATE, e.getMessage());
         }
