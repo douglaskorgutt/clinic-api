@@ -1,10 +1,10 @@
 package org.korgut.clinicapi.domain.admin.presentation;
 
 
-import org.korgut.clinicapi.domain.admin.core.model.commands.CreateDoctorCommand;
+import org.korgut.clinicapi.domain.admin.core.model.commands.doctor.CreateDoctorCommand;
 import org.korgut.clinicapi.domain.admin.core.model.exceptions.CrudException;
-import org.korgut.clinicapi.domain.admin.core.model.results.DoctorHasBeenCreated;
-import org.korgut.clinicapi.domain.admin.core.ports.incoming.CreateDoctor;
+import org.korgut.clinicapi.domain.admin.core.model.results.doctor.DoctorHasBeenCreated;
+import org.korgut.clinicapi.domain.admin.core.ports.incoming.doctor.CreateDoctor;
 import org.korgut.clinicapi.domain.admin.presentation.dto.inbound.CreateDoctorInboundDto;
 import org.korgut.clinicapi.domain.admin.presentation.dto.outbound.CreateDoctorOutboundDto;
 import org.springframework.http.MediaType;

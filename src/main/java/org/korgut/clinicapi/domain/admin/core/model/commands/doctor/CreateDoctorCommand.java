@@ -1,4 +1,4 @@
-package org.korgut.clinicapi.domain.admin.core.model.commands;
+package org.korgut.clinicapi.domain.admin.core.model.commands.doctor;
 
 public record CreateDoctorCommand(
         String commandId,

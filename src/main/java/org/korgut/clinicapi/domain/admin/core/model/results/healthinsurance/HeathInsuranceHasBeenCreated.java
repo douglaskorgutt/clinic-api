@@ -1,4 +1,6 @@
-package org.korgut.clinicapi.domain.admin.core.model.results;
+package org.korgut.clinicapi.domain.admin.core.model.results.healthinsurance;
+
+import org.korgut.clinicapi.domain.admin.core.model.results.CommandResult;
 
 public class HeathInsuranceHasBeenCreated extends CommandResult {
     private final String name;

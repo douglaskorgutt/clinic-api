@@ -1,7 +1,7 @@
 package org.korgut.clinicapi.domain.admin.core.facades;
 
 
-import org.korgut.clinicapi.domain.admin.core.model.commands.CreatePatientCommand;
+import org.korgut.clinicapi.domain.admin.core.model.commands.patient.CreatePatientCommand;
 import org.korgut.clinicapi.domain.admin.core.model.entities.City;
 import org.korgut.clinicapi.domain.admin.core.model.entities.HealthInsurance;
 import org.korgut.clinicapi.domain.admin.core.model.entities.Patient;
@@ -10,7 +10,7 @@ import org.korgut.clinicapi.domain.admin.core.model.exceptions.CrudException;
 import org.korgut.clinicapi.domain.admin.core.model.exceptions.DatabaseException;
 import org.korgut.clinicapi.domain.admin.core.model.results.CommandResult;
 import org.korgut.clinicapi.domain.admin.core.model.results.PatientHasBeenCreated;
-import org.korgut.clinicapi.domain.admin.core.ports.incoming.CreatePatient;
+import org.korgut.clinicapi.domain.admin.core.ports.incoming.patient.CreatePatient;
 import org.korgut.clinicapi.domain.admin.core.ports.outgoing.CityDatabase;
 import org.korgut.clinicapi.domain.admin.core.ports.outgoing.HealthInsuranceDatabase;
 import org.korgut.clinicapi.domain.admin.core.ports.outgoing.PatientDatabase;

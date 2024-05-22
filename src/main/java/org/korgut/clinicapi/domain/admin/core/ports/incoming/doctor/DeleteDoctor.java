@@ -1,6 +1,6 @@
-package org.korgut.clinicapi.domain.admin.core.ports.incoming;
+package org.korgut.clinicapi.domain.admin.core.ports.incoming.doctor;
 
-import org.korgut.clinicapi.domain.admin.core.model.commands.DeleteDoctorCommand;
+import org.korgut.clinicapi.domain.admin.core.model.commands.doctor.DeleteDoctorCommand;
 import org.korgut.clinicapi.domain.admin.core.model.exceptions.CrudException;
 import org.korgut.clinicapi.domain.admin.core.model.results.CommandResult;
 

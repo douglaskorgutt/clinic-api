@@ -1,7 +1,7 @@
 package org.korgut.clinicapi.domain.admin.core.facades;
 
 
-import org.korgut.clinicapi.domain.admin.core.model.commands.CreateMedicationCommand;
+import org.korgut.clinicapi.domain.admin.core.model.commands.medication.CreateMedicationCommand;
 import org.korgut.clinicapi.domain.admin.core.model.entities.Medication;
 import org.korgut.clinicapi.domain.admin.core.model.enums.CrudOperation;
 import org.korgut.clinicapi.domain.admin.core.model.exceptions.CrudException;
@@ -9,7 +9,7 @@ import org.korgut.clinicapi.domain.admin.core.model.exceptions.DatabaseException
 import org.korgut.clinicapi.domain.admin.core.model.exceptions.ValidationException;
 import org.korgut.clinicapi.domain.admin.core.model.results.CommandResult;
 import org.korgut.clinicapi.domain.admin.core.model.results.MedicationHasBeenCreated;
-import org.korgut.clinicapi.domain.admin.core.ports.incoming.CreateMedication;
+import org.korgut.clinicapi.domain.admin.core.ports.incoming.medication.CreateMedication;
 import org.korgut.clinicapi.domain.admin.core.ports.outgoing.MedicationDatabase;
 import org.korgut.clinicapi.domain.admin.core.ports.outgoing.MedicationValidator;
 

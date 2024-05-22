@@ -4,7 +4,7 @@ public abstract class CommandResult {
     String commandId;
     String inboundCommandId;
 
-    CommandResult(String commandId, String inboundCommandId) {
+    public CommandResult(String commandId, String inboundCommandId) {
        this.commandId = commandId;
        this.inboundCommandId = inboundCommandId;
     }

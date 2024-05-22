@@ -2,7 +2,7 @@ package org.korgut.clinicapi.domain.admin.infra.spring;
 
 
 import org.korgut.clinicapi.domain.admin.core.facades.DoctorFacade;
-import org.korgut.clinicapi.domain.admin.core.ports.incoming.CreateDoctor;
+import org.korgut.clinicapi.domain.admin.core.ports.incoming.doctor.CreateDoctor;
 import org.korgut.clinicapi.domain.admin.core.ports.outgoing.DoctorDatabase;
 import org.korgut.clinicapi.domain.admin.core.ports.outgoing.HealthInsuranceDatabase;
 import org.korgut.clinicapi.domain.admin.infra.adapter.DoctorDatabaseAdapter;

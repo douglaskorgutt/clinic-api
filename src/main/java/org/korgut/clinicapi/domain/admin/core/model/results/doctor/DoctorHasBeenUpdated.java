@@ -1,6 +1,7 @@
-package org.korgut.clinicapi.domain.admin.core.model.results;
+package org.korgut.clinicapi.domain.admin.core.model.results.doctor;
 
 import org.korgut.clinicapi.domain.admin.core.model.entities.Doctor;
+import org.korgut.clinicapi.domain.admin.core.model.results.CommandResult;
 
 public class DoctorHasBeenUpdated extends CommandResult {
     private final Doctor doctor;

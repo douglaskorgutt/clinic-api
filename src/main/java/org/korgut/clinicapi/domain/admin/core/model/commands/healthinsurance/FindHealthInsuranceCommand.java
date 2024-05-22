@@ -1,4 +1,4 @@
-package org.korgut.clinicapi.domain.admin.core.model.commands;
+package org.korgut.clinicapi.domain.admin.core.model.commands.healthinsurance;
 
 public record FindHealthInsuranceCommand(String commandId, String healthInsuranceName) {
     public FindHealthInsuranceCommand {

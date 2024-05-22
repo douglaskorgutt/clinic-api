@@ -1,4 +1,4 @@
-package org.korgut.clinicapi.domain.admin.core.model.commands;
+package org.korgut.clinicapi.domain.admin.core.model.commands.healthinsurance;
 
 import org.korgut.clinicapi.domain.admin.core.model.entities.HealthInsurance;
 

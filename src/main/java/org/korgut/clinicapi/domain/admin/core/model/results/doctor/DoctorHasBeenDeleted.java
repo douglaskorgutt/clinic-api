@@ -1,4 +1,6 @@
-package org.korgut.clinicapi.domain.admin.core.model.results;
+package org.korgut.clinicapi.domain.admin.core.model.results.doctor;
+
+import org.korgut.clinicapi.domain.admin.core.model.results.CommandResult;
 
 public class DoctorHasBeenDeleted extends CommandResult {
     private String doctorId;

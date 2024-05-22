@@ -1,20 +1,24 @@
 package org.korgut.clinicapi.domain.admin.core.facades;
 
 
-import org.korgut.clinicapi.domain.admin.core.model.commands.CreateDoctorCommand;
-import org.korgut.clinicapi.domain.admin.core.model.commands.DeleteDoctorCommand;
-import org.korgut.clinicapi.domain.admin.core.model.commands.FindDoctorCommand;
-import org.korgut.clinicapi.domain.admin.core.model.commands.UpdateDoctorCommand;
+import org.korgut.clinicapi.domain.admin.core.model.commands.doctor.CreateDoctorCommand;
+import org.korgut.clinicapi.domain.admin.core.model.commands.doctor.DeleteDoctorCommand;
+import org.korgut.clinicapi.domain.admin.core.model.commands.doctor.FindDoctorCommand;
+import org.korgut.clinicapi.domain.admin.core.model.commands.doctor.UpdateDoctorCommand;
 import org.korgut.clinicapi.domain.admin.core.model.entities.Doctor;
 import org.korgut.clinicapi.domain.admin.core.model.entities.HealthInsurance;
 import org.korgut.clinicapi.domain.admin.core.model.enums.CrudOperation;
 import org.korgut.clinicapi.domain.admin.core.model.exceptions.CrudException;
 import org.korgut.clinicapi.domain.admin.core.model.exceptions.DatabaseException;
 import org.korgut.clinicapi.domain.admin.core.model.results.*;
-import org.korgut.clinicapi.domain.admin.core.ports.incoming.CreateDoctor;
-import org.korgut.clinicapi.domain.admin.core.ports.incoming.DeleteDoctor;
-import org.korgut.clinicapi.domain.admin.core.ports.incoming.FindDoctor;
-import org.korgut.clinicapi.domain.admin.core.ports.incoming.UpdateDoctor;
+import org.korgut.clinicapi.domain.admin.core.model.results.doctor.DoctorHasBeenCreated;
+import org.korgut.clinicapi.domain.admin.core.model.results.doctor.DoctorHasBeenDeleted;
+import org.korgut.clinicapi.domain.admin.core.model.results.doctor.DoctorHasBeenFound;
+import org.korgut.clinicapi.domain.admin.core.model.results.doctor.DoctorHasBeenUpdated;
+import org.korgut.clinicapi.domain.admin.core.ports.incoming.doctor.CreateDoctor;
+import org.korgut.clinicapi.domain.admin.core.ports.incoming.doctor.DeleteDoctor;
+import org.korgut.clinicapi.domain.admin.core.ports.incoming.doctor.FindDoctor;
+import org.korgut.clinicapi.domain.admin.core.ports.incoming.doctor.UpdateDoctor;
 import org.korgut.clinicapi.domain.admin.core.ports.outgoing.DoctorDatabase;
 import org.korgut.clinicapi.domain.admin.core.ports.outgoing.HealthInsuranceDatabase;
 

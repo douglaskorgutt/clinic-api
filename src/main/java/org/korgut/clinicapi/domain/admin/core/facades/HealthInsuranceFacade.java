@@ -1,21 +1,21 @@
 package org.korgut.clinicapi.domain.admin.core.facades;
 
 
-import org.korgut.clinicapi.domain.admin.core.model.commands.CreateHealthInsuranceCommand;
-import org.korgut.clinicapi.domain.admin.core.model.commands.FindHealthInsuranceCommand;
-import org.korgut.clinicapi.domain.admin.core.model.commands.UpdateHealthInsuranceCommand;
+import org.korgut.clinicapi.domain.admin.core.model.commands.healthinsurance.CreateHealthInsuranceCommand;
+import org.korgut.clinicapi.domain.admin.core.model.commands.healthinsurance.FindHealthInsuranceCommand;
+import org.korgut.clinicapi.domain.admin.core.model.commands.healthinsurance.UpdateHealthInsuranceCommand;
 import org.korgut.clinicapi.domain.admin.core.model.entities.HealthInsurance;
 import org.korgut.clinicapi.domain.admin.core.model.enums.CrudOperation;
 import org.korgut.clinicapi.domain.admin.core.model.exceptions.CrudException;
 import org.korgut.clinicapi.domain.admin.core.model.exceptions.DatabaseException;
 import org.korgut.clinicapi.domain.admin.core.model.exceptions.ValidationException;
 import org.korgut.clinicapi.domain.admin.core.model.results.CommandResult;
-import org.korgut.clinicapi.domain.admin.core.model.results.HealthInsuranceHasBeenFound;
-import org.korgut.clinicapi.domain.admin.core.model.results.HealthInsuranceUpdated;
-import org.korgut.clinicapi.domain.admin.core.model.results.HeathInsuranceHasBeenCreated;
-import org.korgut.clinicapi.domain.admin.core.ports.incoming.CreateHealthInsurance;
-import org.korgut.clinicapi.domain.admin.core.ports.incoming.FindHealthInsurance;
-import org.korgut.clinicapi.domain.admin.core.ports.incoming.UpdateHealthInsurance;
+import org.korgut.clinicapi.domain.admin.core.model.results.healthinsurance.HealthInsuranceHasBeenFound;
+import org.korgut.clinicapi.domain.admin.core.model.results.healthinsurance.HealthInsuranceUpdated;
+import org.korgut.clinicapi.domain.admin.core.model.results.healthinsurance.HeathInsuranceHasBeenCreated;
+import org.korgut.clinicapi.domain.admin.core.ports.incoming.healthinsurance.CreateHealthInsurance;
+import org.korgut.clinicapi.domain.admin.core.ports.incoming.healthinsurance.FindHealthInsurance;
+import org.korgut.clinicapi.domain.admin.core.ports.incoming.healthinsurance.UpdateHealthInsurance;
 import org.korgut.clinicapi.domain.admin.core.ports.outgoing.CooperativeValidator;
 import org.korgut.clinicapi.domain.admin.core.ports.outgoing.HealthInsuranceDatabase;
 

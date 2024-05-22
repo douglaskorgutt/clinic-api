@@ -1,4 +1,4 @@
-package org.korgut.clinicapi.domain.admin.core.model.commands;
+package org.korgut.clinicapi.domain.admin.core.model.commands.medication;
 public record CreateMedicationCommand(String name, String serialNumber) {
     public CreateMedicationCommand {
         if (name == null || name.isBlank()) {

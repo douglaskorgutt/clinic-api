@@ -1,6 +1,7 @@
-package org.korgut.clinicapi.domain.admin.core.model.results;
+package org.korgut.clinicapi.domain.admin.core.model.results.healthinsurance;
 
 import org.korgut.clinicapi.domain.admin.core.model.entities.HealthInsurance;
+import org.korgut.clinicapi.domain.admin.core.model.results.CommandResult;
 
 public class HealthInsuranceUpdated extends CommandResult {
     private final HealthInsurance healthInsurance;
