@@ -32,4 +32,14 @@ public class HealthInsuranceDatabaseAdapter implements HealthInsuranceDatabase {
                     " with id [" + id + "] Error: " + e.getMessage());
         }
     }
+
+    @Override
+    public Optional<HealthInsurance> findHealthInsuranceByName(String name) throws DatabaseException {
+        return Optional.empty();
+    }
+
+    @Override
+    public HealthInsurance updateHealthInsurance(HealthInsurance healthInsurance) throws DatabaseException {
+        return null;
+    }
 }
