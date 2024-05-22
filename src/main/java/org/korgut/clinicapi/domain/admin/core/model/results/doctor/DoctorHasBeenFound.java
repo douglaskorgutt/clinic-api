@@ -6,9 +6,8 @@ import org.korgut.clinicapi.domain.admin.core.model.results.CommandResult;
 public class DoctorHasBeenFound extends CommandResult {
     private final Doctor doctor;
 
-    public DoctorHasBeenFound(String id, String inboundCommandId, Doctor doctor) {
-        this.commandId = id;
-        this.inboundCommandId = inboundCommandId;
+    public DoctorHasBeenFound(String commandId, String inboundCommandId, Doctor doctor) {
+        super(commandId, inboundCommandId);
         this.doctor = doctor;
     }
 

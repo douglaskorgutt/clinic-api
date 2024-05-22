@@ -7,8 +7,7 @@ public class DoctorHasBeenDeleted extends CommandResult {
     private String doctorName;
 
     public DoctorHasBeenDeleted(String commandId, String inboundCommandId, String doctorId, String doctorName) {
-        this.commandId = commandId;
-        this.inboundCommandId = inboundCommandId;
+        super(commandId, inboundCommandId);
         this.doctorId = doctorId;
         this.doctorName = doctorName;
     }

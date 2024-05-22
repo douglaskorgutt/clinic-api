@@ -8,8 +8,6 @@ public class DoctorHasBeenUpdated extends CommandResult {
 
     public DoctorHasBeenUpdated(String commandId, String inboundCommandId, Doctor doctor) {
         super(commandId, inboundCommandId);
-        this.commandId = commandId;
-        this.inboundCommandId = inboundCommandId;
         this.doctor = doctor;
     }
 
