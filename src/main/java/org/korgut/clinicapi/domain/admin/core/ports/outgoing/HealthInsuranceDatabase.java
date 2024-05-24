@@ -14,4 +14,6 @@ public interface HealthInsuranceDatabase {
     Optional<HealthInsurance> findHealthInsuranceByName(String name) throws DatabaseException;
 
     HealthInsurance updateHealthInsurance(HealthInsurance healthInsurance) throws DatabaseException;
+
+    HealthInsurance deleteHealthInsuranceById(String healthInsuranceId) throws DatabaseException;
 }

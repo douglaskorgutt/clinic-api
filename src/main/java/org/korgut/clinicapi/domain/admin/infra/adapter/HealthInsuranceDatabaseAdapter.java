@@ -42,4 +42,9 @@ public class HealthInsuranceDatabaseAdapter implements HealthInsuranceDatabase {
     public HealthInsurance updateHealthInsurance(HealthInsurance healthInsurance) throws DatabaseException {
         return null;
     }
+
+    @Override
+    public HealthInsurance deleteHealthInsuranceById(String healthInsuranceId) throws DatabaseException {
+        return null;
+    }
 }
